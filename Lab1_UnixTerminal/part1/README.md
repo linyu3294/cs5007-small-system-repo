@@ -7,13 +7,6 @@ We have previously done quite a bit of work with data structures such as a linke
 
 This will also prepare us for our homework, where we are going to automate some of our lives!
 
-# Part 0 - SSH and git pull
-
-1. First open a terminal and ssh into the Khoury servers ``` ssh khoury_user_name_here@login.khoury.neu.edu ```
-2. Navigate to your Monorepo directory(Use the `cd` command to change directory, `ls` to see files, and `pwd` to see your path)
-3. When you are within your Monorepo, do a ```git pull```. This will add all of the files I have previously pushed into your repositories.
-
-If for some reason you are having troubles, you can always create a new copy of your monorepo by running `git clone https://github.com/COURSENAME/monorepo-yourUserNameHere` in a separate directory.
 
 # Part 1 - VIM and TMUX Round 2 (Wait--do I really have to use these tools??)
 
