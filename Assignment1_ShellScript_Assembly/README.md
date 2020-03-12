@@ -1,11 +1,16 @@
 # TODO Please edit the following information in your assignment
 
-- Name:
-- How many hours did it take you to complete this assignment?
-- Did you collaborate with any other students/TAs/Professors?
+- Name: Yu Lin
+- How many hours did it take you to complete this assignment? 40
+- Did you collaborate with any other students/TAs/Professors? 
 - Did you use any external resources? (Cite them below)
-  - tbd
-  - tbd
+
+    Please Read Following Citation!!!!!!
+    Citation - For this assignment, I recieved a lot of help from a coworker of mine who is an absolute wiz at shell script.
+    Co-author Name and contact: Robert Strohmenger <rstrohmenger@plymouthrock.com>
+    Organization: Plymouth Rock
+
+    
 - (Optional) What was your favorite part of the assignment?
 - (Optional) How would you improve the assignment?
 
