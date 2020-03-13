@@ -1,5 +1,5 @@
 // Implement your cycle count tool here.
-/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,7 +28,7 @@ if (fileReader == NULL) {
     int counter_multi=0;
     int counter_div =0;
     int counter_mov =0;
-    int cunter_leaq =0;
+    int counter_leaq =0;
     int counter_push =0;
     int counter_pop =0;
     int counter_ret =0;
@@ -38,25 +38,25 @@ if (fileReader == NULL) {
 
 char ch;
 // create an array string to store the string to be parsed
-    char myString[1000]
+    char myString[1000];
     
     int i;
     for (i =0; i< 50; i++){
-        ch = fgets(myString, 1000, filereader);
+        ch = fgets(myString, 1000, fileReader);
         char *keyword = strtok(myString, "\t");
-        while(token != NULL){
-            if (strcmp(keyword, "add") ==0 
+        while(keyword != NULL){
+            if (strcmp(keyword, "add") ==0
                     ||
                 strcmp(keyword, "addq") ==0
                     ||
-                strcmp(meyword, "addb") ==0
+                strcmp(keyword, "addb") ==0
                 ){counter_add++; }
         
             if (strcmp(keyword, "sub") ==0){
-                counter_subtract++; 
+                counter_subtract++;
             }
             if (strcmp(keyword, "mul") ==0){
-                counter_mult++;
+                counter_multi++;
             }
             if (strcmp(keyword, "div") ==0){
                 counter_div++;
@@ -67,15 +67,17 @@ char ch;
             if (strcmp(keyword, "leaq") ==0) {
                 counter_leaq++;
             }
-            if (strcmp(keyword, "pushq") ==0){          
+            if (strcmp(keyword, "pushq") ==0){
                 counter_push++;
             }
             if (strcmp(keyword, "popq") ==0){
                 counter_pop++;
             }
             if (strcmp(keyword, "ret") ==0) {
-                counter_ret++;     
+                counter_ret++;
             }
 
-
+        
+        }
+    }
 }
