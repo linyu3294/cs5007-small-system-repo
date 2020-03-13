@@ -11,12 +11,15 @@ _barebones:
 
 main:
 					# (1) What are we setting up here?
-					# Ans:
-	pushq %rbp			#
-	movq  %rsp, %rbp		#
+					# Ans: We are setting up a framepointer/basepointer in %rbp.
+	pushq %rbp			# The basepointer denotes the starting point in the stack's mememory.
+	movq  %rsp, %rbp		# After the base pointer is established, we will then set the stackpointer to
+					# to the same register as the base pointer. In effect, the stackpointer will start 
+					# at the same place as the basepointer.
 
 					# (2) What is going on here
-					# Ans:
+					# Ans: Here, we are writting the number 1 literally into registers, %rax and %rdi.
+					# 
 	movq $1, %rax			# 
 	movq $1, %rdi			#
 	leaq .hello.str,%rsi		#
