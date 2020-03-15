@@ -91,12 +91,17 @@ It has been compiled with debugging symbols(*-g*) so you may investigate and vie
 In a brief sentence or two.
 
 1. What was the bug?
+
 	The bug was a segmentation fault.
 	It was caused by initialize_front method.
 	More specifically, %rax has a null pointer. %rax was never initialized.
+	
 2. What line did the bug occur?
+
 	Line 15.
+	
 3. What is the fix for the bug?
+
 	initialize %rax. %rax should be assigned a value.
 
 ## Aside: Core dump
