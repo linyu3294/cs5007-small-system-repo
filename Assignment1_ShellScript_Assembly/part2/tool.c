@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,27 +19,10 @@ int main(int argc, char* argv[]) {
         printf("File not found!\n");
         return 1;
     }
-
-    // Initialize all counters to 0
-    int counter_add = 0;
-    int counter_sub = 0;
-    int counter_multi = 0;
-    int counter_div = 0;
-    int counter_mov = 0;
-    int counter_leaq = 0;
-    int counter_push = 0;
-    int counter_pop = 0;
-    int counter_ret = 0;
-    int totalCounter = 0;
-
-if (fileReader == NULL) {
-    printf("Unable to open file! Please make sure file is in directory specified\n");
-    return 1;
-}
-
-// Initialize all counters with value of 0.
+    
+    // Initialize all counters with value of 0.
     int counter_add =0;
-    int counter_subtract =0;
+    int counter_sub =0;
     int counter_multi=0;
     int counter_div =0;
     int counter_mov =0;
@@ -48,7 +30,6 @@ if (fileReader == NULL) {
     int counter_push =0;
     int counter_pop =0;
     int counter_ret =0;
-
     int total_counters =0;
 
     char myString[100];
@@ -67,7 +48,7 @@ if (fileReader == NULL) {
                 ){counter_add++; }
         
             if (strcmp(keyword, "sub") ==0){
-                counter_subtract++;
+                counter_sub++;
             }
             if (strcmp(keyword, "mul") ==0){
                 counter_multi++;
@@ -93,6 +74,7 @@ if (fileReader == NULL) {
             keyword = strtok(NULL, " ");
         }
     }
+    
     // print results of each counter
     printf("=== counters ===\n");
     printf(" Add counter: %d\n", counter_add);
@@ -103,8 +85,8 @@ if (fileReader == NULL) {
     printf(" Lea counter: %d\n", counter_leaq);
     printf(" push counter: %d\n",counter_push );
     printf(" pop counter: %d\n", counter_pop);
-    totalCounter = (counter_add + counter_sub + counter_multi + counter_div + counter_mov + counter_leaq + counter_push + counter_pop);
-    printf(" Total counts = %d\n", totalCounter);
+    total_counters = (counter_add + counter_sub + counter_multi + counter_div + counter_mov + counter_leaq + counter_push + counter_pop);
+    printf(" Total counts = %d\n", total_counters);
     
    
     int addCycle = counter_add*2;
@@ -125,17 +107,14 @@ if (fileReader == NULL) {
     printf(" Mov cycles: %d\n", movCycle);
     printf(" Lea cycles: %d\n", leaCycle);
     printf(" push cycles: %d\n", pushCycle);
-    printf(" pop cycles: %d\n", popCycle);    
+    printf(" pop cycles: %d\n", popCycle);
     totalCycles = (addCycle + subCycle + mulCycle + divCycle + movCycle + leaCycle + pushCycle + popCycle);
     printf(" Total cycles = %d\n", totalCycles);
     
-    // Close file After we are done 
+    // Close file After we are done
     fclose(fileReader);
 
     return 0;
         
-        }
-    }
+
 }
-
-
