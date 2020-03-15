@@ -1,4 +1,4 @@
-// Implement your cycle count tool here.
+i// Implement your cycle count tool here.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,7 +16,6 @@ int main(int argc, char* argv[]) {
     FILE* fileReader = fopen(argv[1], "r");
     
     
-
     // Checking if the file is found
     if (fileReader == NULL){
         printf("File not found!\n");
@@ -33,48 +32,66 @@ int main(int argc, char* argv[]) {
     int counter_push = 0;
     int counter_pop = 0;
     int counter_ret = 0;
-    int totalCounter = 0; 
-    
+    int totalCounter = 0;
+
+if (fileReader == NULL) {
+    printf("Unable to open file! Please make sure file is in directory specified\n");
+    return 1;
+}
+
+// Initialize all counters with value of 0.
+    int counter_add =0;
+    int counter_subtract =0;
+    int counter_multi=0;
+    int counter_div =0;
+    int counter_mov =0;
+    int counter_leaq =0;
+    int counter_push =0;
+    int counter_pop =0;
+    int counter_ret =0;
+
+    int total_counters =0;
+
     char myString[100];
     char ch;
 
     int i;
-    // for loop is resetting ch each time. 
-    for (i = 0; i < 50; i++){
-        ch = fgets(myString, 100, fileReader);
-        char *token = strtok(myString, " \t");
-        while (token != NULL){
-            if ((strcmp(token,"add") ==0) 
-                    ||(strcmp(token,"addq") == 0) 
-                    || (strcmp(token,"addb")==0))
-            {
-                counter_add++;
-            }   
-            if (strcmp(token,"sub") == 0){
-                counter_sub++;
+    for (i =0; i< 50; i++){
+        ch = fgets(myString, 1000, fileReader);
+        char *keyword = strtok(myString, "\t");
+        while(keyword != NULL){
+            if (strcmp(keyword, "add") ==0
+                    ||
+                strcmp(keyword, "addq") ==0
+                    ||
+                strcmp(keyword, "addb") ==0
+                ){counter_add++; }
+        
+            if (strcmp(keyword, "sub") ==0){
+                counter_subtract++;
             }
-            if (strcmp(token,"mul") == 0){
+            if (strcmp(keyword, "mul") ==0){
                 counter_multi++;
             }
-            if (strcmp(token,"div") == 0){
+            if (strcmp(keyword,"div") == 0){
                 counter_div++;
             }
-            if (strcmp(token,"movq")== 0){
+            if (strcmp(keyword,"movq")== 0){
                 counter_mov++;
             }
-            if (strcmp(token,"leaq") == 0){
+            if (strcmp(keyword,"leaq") == 0){
                 counter_leaq++;
             }
-            if (strcmp(token,"pushq") == 0){
+            if (strcmp(keyword,"pushq") == 0){
                 counter_push++;
             }
-            if (strcmp(token,"popq") == 0){
+            if (strcmp(keyword,"popq") == 0){
                 counter_pop++;
             }
-            if (strcmp(token,"ret") == 0){
+            if (strcmp(keyword,"ret") == 0){
                 counter_ret++;
             }
-            token = strtok(NULL, " ");
+            keyword = strtok(NULL, " ");
         }
     }
     // print results of each counter
@@ -109,8 +126,7 @@ int main(int argc, char* argv[]) {
     printf(" Mov cycles: %d\n", movCycle);
     printf(" Lea cycles: %d\n", leaCycle);
     printf(" push cycles: %d\n", pushCycle);
-    printf(" pop cycles: %d\n", popCycle);
-    
+    printf(" pop cycles: %d\n", popCycle);    
     totalCycles = (addCycle + subCycle + mulCycle + divCycle + movCycle + leaCycle + pushCycle + popCycle);
     printf(" Total cycles = %d\n", totalCycles);
     
@@ -118,6 +134,9 @@ int main(int argc, char* argv[]) {
     fclose(fileReader);
 
     return 0;
+        
+        }
+    }
 }
 
 
