@@ -18,12 +18,13 @@ echo 4 - Outlook
 echo 5 - Excel 
 set /p userinput="Please make a selection:"
 
-if /i "%userinput%" == "0" goto zero
-if /i "%userinput%" == "1" goto one
-if /i "%userinput%" == "2" goto two
-if /i "%userinput%" == "3" goto three
-if /i "%userinput%" == "4" goto four
-if /i "%userinput%" == "5" goto five
+if /i "%userinput%" == "0" goto zero fi
+if /i "%userinput%" == "1" goto one fi
+if /i "%userinput%" == "2" goto two fi
+if /i "%userinput%" == "3" goto three fi
+if /i "%userinput%" == "4" goto four fi
+if /i "%userinput%" == "5" goto five fi
+
 echo Invalid Option
 goto end
 
