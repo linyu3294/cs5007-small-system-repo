@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 i// Implement your cycle count tool here.
 
 #include <stdio.h>
