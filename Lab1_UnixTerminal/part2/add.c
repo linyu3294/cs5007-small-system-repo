@@ -2,14 +2,14 @@
 
 #include <stdio.h>
 
-long add(long a, long b){
-    int result = a + b;
+long add(long x, long y){
+    int result = x + y;
     return result;
 }
 
 int main() {
-    long numOne = 3;
-    long numTwo = 4;
+    long num_1 = 3;
+    long num_2 = 4;
     printf("%d\n", add(3, 4));
     return 0;
 }
