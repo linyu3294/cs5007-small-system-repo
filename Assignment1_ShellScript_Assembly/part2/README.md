@@ -200,20 +200,27 @@ Total Cycles = ???
 Our Cycle Count Tool is what we call a 'static analysis'. That is, it uncovers information about our programs before it is running (during compile-time). Given that our tool uncovers information before the program, what is (at least) one pro of this, and one con you can think of?
 
 Pro:
-1. *TODO: EDIT README WITH YOUR ANSWER HERE*
+
+A Pro of the Static Analysis is that it demands less resource on the machine. This is because the static analysis does not require the client program to run as it performs analysis on it.
 
 Con:
-1. *TODO: EDIT README WITH YOUR ANSWER HERE*
+
+A con of this approach is that it does not have the same level of indepth analysis as the dynamic analysis. It won't tell you what some subtle observations about your program as it is only performing a superficial scan.
+
 
 ## Dyanmic Analysis
 
 The opposite of a static analysis is a dynamic analysis. Dynamic analysis tools record and return information about programs that are in the process or have finished executing. An example of a dynamic analysis tool is [valgrind](http://valgrind.org/). What do you think a pro and con of dynamic analysis would be?
 
-Pro:
-1. *TODO: EDIT README WITH YOUR ANSWER HERE*
+Pro: 
+
+A Pro of the Dynamic Analysis is that it has lots of indepth observations about your program. For example, Valgrind perfoms at the client program's runtime concurrently. It tells you lots of good info about your memeory leaks.
+
 
 Con:
-1. *TODO: EDIT README WITH YOUR ANSWER HERE*
+
+A Con of this approach is that it takes up more of the computer resource as it requires two programs running, the client program itself and also the analysis tool.
+
 
 
 # Rubric
