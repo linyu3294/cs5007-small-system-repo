@@ -27,7 +27,8 @@
 void Trace(int size, int range){
 	FILE* fp = fopen("regular.txt","w");
 
-	for(int i=0; i < size; i++){
+        int i=0;
+        for(i=0; i < size; i++){
 		char* bin=intToBinaryString((i%range),BITWIDTH);
 		fprintf(fp,"%s\n",bin);
 		free(bin);
@@ -40,9 +41,10 @@ void Trace(int size, int range){
 void randomTrace(int size, int range){
 	FILE* fp = fopen("random.txt","w");
 
-	srand(time(NULL));
-
-	for(int i=0; i < size; i++){
+    	srand(time(NULL));
+        
+        int i =0;
+	for(i=0; i < size; i++){
 		char* bin = intToBinaryString((rand()%range),BITWIDTH);
 		fprintf(fp,"%s\n",bin);
 		free(bin);
@@ -58,8 +60,9 @@ void singleTrace(int size, int value){
 	FILE* fp = fopen("single.txt","w");
 
 	srand(time(NULL));
-
-	for(int i=0; i < size; i++){
+        
+        int i =0;
+	for(i=0; i < size; i++){
 		char* bin = intToBinaryString(value,BITWIDTH);
 		fprintf(fp,"%s\n",bin);
 		free(bin);
@@ -74,10 +77,10 @@ void singleTrace(int size, int value){
 void realisticTrace(int size, int range){
 	FILE* fp = fopen("realistic.txt","w");
 
-	srand(time(NULL));
+    	srand(time(NULL));
 
-
-	for(int i=0; i < size;){
+        int i =0;
+	for(i=0; i < size;){
 
 		int isJump = rand()%2;
 		// If a jump does not occur, then just generate a random instruction
@@ -93,7 +96,8 @@ void realisticTrace(int size, int range){
 			char* bin2 = intToBinaryString((rand()%range),BITWIDTH);
 			char* bin3 = intToBinaryString((rand()%range),BITWIDTH);
 			
-			for(int j = 0; j < 10 && i < size; j++, i+=3){
+                        int j =0;
+    			for(j = 0; j < 10 && i < size; j++, i+=3){
 				fprintf(fp,"%s\n",bin1);
 				fprintf(fp,"%s\n",bin2);
 				fprintf(fp,"%s\n",bin3);

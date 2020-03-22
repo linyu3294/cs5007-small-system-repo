@@ -9,8 +9,8 @@
 // Assume these are all unsigned addresses
 int binaryStringToInt(char* bin, int size){
 	int sum=0;
-
-	for(int i =size-1; i > -1; --i){
+        int i =0;
+	for(i =size-1; i > -1; --i){
 		if(bin[i]=='1'){
 			sum = sum + pow(2,size-1-i-1);
 		}	
@@ -32,8 +32,9 @@ int binaryStringRangeToInt(char* bin, int start, int stop){
 	int sum=0;
 	int counter =0;
 	unsigned long size = strlen(bin);
-
-	for(int i = size-start-1; counter < stop-start+1; i--){
+        
+        int i =0;
+	for(i = size-start-1; counter < stop-start+1; i--){
 		if(bin[i]=='1'){	 
 			sum = sum + pow(2,counter);
 		}	
@@ -65,7 +66,8 @@ char* intToBinaryString(int i, int bits){
 	//                ^binary[2]  
 	char* binary = (char*)malloc((bits+1)*sizeof(char));
 	// Fill with zeros
-	for(int i =0; i < bits; ++i){
+    	//int i =0;
+        for(i =0; i < bits; ++i){
 		binary[i]='0';
 	}
 	binary[bits]='\0';	
