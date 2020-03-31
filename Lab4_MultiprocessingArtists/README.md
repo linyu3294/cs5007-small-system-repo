@@ -29,7 +29,7 @@ Let us see how parallel we can get (i.e. how many artists) by analyzing our mach
   
 **Write 1 sentence about your findings here**
 
-*Write your response here* 
+The Class Server has 42 Processors, each with CPUCore Value = 12.
 
 ### Task 2 - fork() parallelism
 
