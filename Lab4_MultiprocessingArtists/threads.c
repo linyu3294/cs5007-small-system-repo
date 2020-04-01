@@ -30,6 +30,7 @@ void paint (int workCounter){
         // R,G,B value (that is why it is 64*3)
         int i = 0;
         for(i =0; i< 64*3; i++){
+            
             colors[workCounter][i]= workCounter; // Try doing something more interesting with the colors!
         }
 }
@@ -37,8 +38,9 @@ void paint (int workCounter){
 // Thread with variable arguments
 void *thread(void *vargp){
     pthread_mutex_lock(&mutex1);
-    paint(counter);    
+    
     counter = counter +1;
+    paint(counter);
     pthread_mutex_unlock(&mutex1);
     return 0;
 }
