@@ -93,7 +93,7 @@ Let us modify our Task 2:
 
 **Write 1 sentence about where you think we are forgetting to reclaim memory**
 
-*Write your response here*
+When the parent is done the child is orphaned and has not reclaimed memory.
 
 ### Task 4 - Synchronization with fork()
 
@@ -132,7 +132,8 @@ Let us now have our artists work on one giant masterpiece (as originally intende
 
 **Write 1 sentence about the difference between fork and vfork**
 
-*Write your response here*
+vfork shares stack memeory for it's children where as fork does not.
+vfork' parent waits on children before anything happens. whereas fork doesn not wait on its children.
 
 Scroll down a bit to see the answers after reading the man page.
 
@@ -341,7 +342,7 @@ Once again, Michaelangelo, Rapheal, Donatello, and Leonardo are amongst 64 great
 
 **Write 1 sentence if you think you need to use locks anywhere in this solution
 
-*Write your response here*
+Yes we need to use lock to isolate the counter so that it is not accessed by multiple threads. 
 
 (Here is a quite reminder below of using threads for your reference.)
 
