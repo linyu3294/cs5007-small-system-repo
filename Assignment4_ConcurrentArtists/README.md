@@ -193,7 +193,7 @@ Some tutorial series that look reasonable (you can search around for others):
 	
 **Write a few sentences here:** describing what you got caught up on. If you were caught up on 100% of things, write a few sentences about what new things you sat down and learned for 1-2 hours.
 
-(*write your sentences here, share any tutorials you found*)
+I learned a little bit more about the array. An array is literally a pointer. Thats why you can assign a pointer to an array without annotating it as a address. ex int* ptr = array[]; without using &;
 
 ## Rubric
 
