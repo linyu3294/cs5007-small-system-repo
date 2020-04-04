@@ -122,15 +122,18 @@ void* paint(void* args){
         // at first glance this seems okay, but convince yourself
         // we can still have data races.
         // I suggest investigating a 'trylock'
- 
+        
+        
         // Try to paint
         // paint the pixel if it is white.
-        if( canvas[painter->x][painter->y].r == 255 &&
+        if( pthread_mutex_trylock(&canvas[painter->x][painter->y].lock)==0 &&
+            canvas[painter->x][painter->y].r == 255 &&
             canvas[painter->x][painter->y].g == 255 &&
             canvas[painter->x][painter->y].b == 255){
                 canvas[painter->x][painter->y].r = painter->r;
                 canvas[painter->x][painter->y].g = painter->g;
                 canvas[painter->x][painter->y].b = painter->b;
+            pthread_mutex_unlock(&canvas[painter->x][painter->y].lock);
         }else{
         // If we cannot paint the pixel, then we backtrack
         // to a previous pixel that we own.
@@ -151,7 +154,7 @@ int main(){
 	artist_t* Raphael = malloc(sizeof(artist_t));
 	artist_t* Leonardo = malloc(sizeof(artist_t));
 	
-	// Fill in the artist attributes
+    // Fill in the artist attributes
     // You will see below how this structure is used
     // as arguments passed into our thread. This is a
     // simple and organized way to pass information along.
@@ -185,7 +188,7 @@ int main(){
 	pthread_t Raphael_tid;
 	pthread_t Leonardo_tid;
     // Initialize a seed for our random number generator
-    srand(time(NULL));
+        srand(time(NULL));
 	
 	// Create our threads for each of our expert artists
 	pthread_create(&Michaelangelo_tid,NULL,(void*)paint,Michaelangelo);
@@ -193,32 +196,41 @@ int main(){
 	pthread_create(&Raphael_tid,NULL,(void*)paint,Raphael);
 	pthread_create(&Leonardo_tid,NULL,(void*)paint,Leonardo);
 
-    // TODO: Add 50 more artists 
-    // int rookieArtists = 50;
-    // pthread_t moreArtists_tid[rookieArtists];
-	// artist_t* moreArtists = malloc(..);
-    // for(int i =0; i < rookieArtists; ++i){
-
-	// Join each with the main thread.  
-	// Do you think our ordering of launching each thread matters?
 	pthread_join(Michaelangelo_tid, NULL);		   
 	pthread_join(Donatello_tid, NULL);		   
 	pthread_join(Raphael_tid, NULL);		   
 	pthread_join(Leonardo_tid, NULL);		   
 
-    // TODO: Add the join the 50 other artists threads here	
-    // for (...)
 
-    // Save our canvas at the end of the painting session
+
+        // TODO: Add 50 more artists 
+        int rookieArtists = 50;
+        pthread_t moreArtists_tid [rookieArtists];
+	artist_t* moreArtists = malloc(sizeof(artist_t)*rookieArtists);
+
+        for(int i =0; i < rookieArtists; ++i){
+            pthread_create(&moreArtists_tid[i], NULL, (void*)paint, NULL);   
+        }
+
+        // TODO: Add the join the 50 other artists threads here	
+        // for (...)
+        for(int i =0; i < rookieArtists; ++i){
+            pthread_join(&moreArtists_tid[i],NULL );
+        }
+
+	// Join each Renaissance Artist with the main thread.  
+	// Do you think our ordering of launching each thread matters?
+        // Save our canvas at the end of the painting session
 	outputCanvas();
 	
 	// Terminate our program
-    free(Michaelangelo);
-    free(Donatello);
-    free(Raphael);
-    free(Leonardo);
+        free(Michaelangelo);
+        free(Donatello);
+        free(Raphael);
+        free(Leonardo);
 
-    // TODO: Free any other memory you can think of
+        // TODO: Free all rookie artists
+        free (moreArtists);
 
 	return 0;
 }
