@@ -174,7 +174,8 @@ This means you need to enforce some locking mechanism.
 
 **Discuss(in a few sentences)** how starvation may occur in the above program, and how you would possibly fix it? (You may fix it in your implementation if you like--the art may become more beautiful!)
 
-*edit and add your response here*
+Stavation occurs when one thread is perpectually denied the resource the process it's work. The area of code that's most at risk of starvation is in the paint function. Or when one painter pepetually enchroches another painter's space and is denied. 
+To fix this, you can make the movement and range be alloted equally and fairly to each artist so that their paths never have to cross.
 
 ## Part 4 - Catch Up
 
