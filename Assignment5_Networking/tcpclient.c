@@ -19,70 +19,77 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-// // A sockets library and internet protocol library
+// A sockets library and internet protocol library
 #include <sys/socket.h>
 #include <netinet/in.h>
 
 
 int main(){
-    //initialize client socket
+    // Initialize client socket
     int client_socket;
     if((client_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0){
         printf("\n Socket creation \n");
     }
 
+    // Set Server Socket address variables
     struct sockaddr_in server_address;
     server_address.sin_family = AF_INET;
-    //specify port to connect to - chose 9004 because it was open
     server_address.sin_port = htons(9004);
     server_address.sin_addr.s_addr = htons(INADDR_ANY);
 
     int connection_status;
     
-    //specifying where to connect 
-    if ((connection_status = connect(client_socket, (struct sockaddr*)&server_address, sizeof(server_address)))< 0){
-            //if connection unsuccessful
+    // Check connection status 
+    if ((connection_status 
+                = connect(
+                    client_socket, 
+                    (struct sockaddr*)&server_address, 
+                    sizeof(server_address)
+                    )
+        )< 0){
+        // If connection unsuccessful then exit
 	    printf("%d Connection unsuccessful\n", connection_status);
             close(client_socket);
             exit(0);
     } else {
+        // Else print successful status
 	printf("Connection successful.\n");
         printf("You have reached the server.\n");
     }
 	
-    //taking in username
+    // Init username
     char username[30];
-    //setting default message to 128 char long
+    // Setting default message to 128 char long
     char clientMessage[128];
     
-    //prompting user to enter username 
+    // Prompting user to enter username 
     printf("Please enter your username > ");
     fgets(username, 30, stdin);
 
-    //getting username length and message length
+    // Getting username length and message length
     int userNameLength = sizeof(username);
     int messageLength = sizeof(clientMessage);  
 
-    //creatng empty char array for server response 
+    // Creatng empty char array for server response 
     char server_response[256];
     
-    //receiving server response 
+    // Receiving server response 
     recv(client_socket, &server_response, sizeof(server_response), 0);
     
-    //sending uername to server with appropriate length 
+    // Sending uername to server with corresponding length 
     send(client_socket, username, userNameLength, NULL); 
     while (1){
-        printf("client> ");
-   	//prompt user to enter message
+        printf("<%s>",username);
+   	//Prompt user to type message
 	fgets(clientMessage, messageLength, stdin);
 	
-	//reformat message length from 128 to actual message length 
+	//Adjust length of message from 128 char to actual message length 
 	int clientMessageLength = strlen(clientMessage);
 	
-	//send message with appropriate message length 
+	//Send message with appropriate message length 
         send(client_socket, clientMessage, clientMessageLength, NULL);
 	
-	//if message == "exit", break out of loop.
+	//If user types "exit", break out of loop.
 	if (strcmp(clientMessage, "exit\n")==0){
             printf("You are exiting the server...goodbye!\n");
 	    break;
