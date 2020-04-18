@@ -100,25 +100,33 @@ answers in a word document and when you are satisfied with your answers paste th
         and translates it to code that the machine can understand. It has a
         mulitples stages of transformations and anlysis. 
 
-      * Why do we use them?
+    * Why do we use them?
       
         We use compilers because it provides us the benefit of not having to
         deal with machine code. It makes us more productive as programers. It
         allows some baked in performance boost to apply to the generated machine
         code. 
 
-      * What is the frontend responsible for? The backend?
+    * What is the frontend responsible for? The backend?
       
-        The front end performs syntatic and semantic anaylysis, which ensures
-        that there are no typos
+        The front end performs syntatic and semantic anaylysis and then produces 
+        a Abstract Syntactic Tree. The Backend optimizes and produces the object 
+        code that the machine can understand.
 
     * Know about Compile-Time and Link-Time Interpositioning.
     
-      * What is the purpose of compile-time and link-time interpositioning and what could it be used for.
+        Compile-Time Interposition optimizes code within the compiled code base.
+        Link-Time Interposition is a technique used to override existing code 
+        during linking time.
+    
+    * What is the purpose of compile-time and link-time interpositioning and what could it be used for.
+      
+        The purpose of compile-time and link-time interpositioning is to provide a 
+        way to change the code base, either add/replace a piece code or 
       
     * What is a linker?
     
-      * Why do we use them?
+    * Why do we use them?
       
     *Describe the linking process
 * **Processor and Processes**
