@@ -193,7 +193,8 @@ answers in a word document and when you are satisfied with your answers paste th
     
     * What is a directly mapped cache?
     
-    
+        A directly mapped cache is a type of cache where one location of in the main memory
+        goes into one slot in the cache memory
     
 * **Virtual Memory**
     *What is virtual memory?
@@ -212,14 +213,24 @@ answers in a word document and when you are satisfied with your answers paste th
     * What is fork(), wait(), a child process, zombie processes, orphan processes
     
        A fork creates a new child process that's a clone of its parent process.
-       A waint  b
+       A wait statement pauses execution until one of the child process is completed.
+       A child process is a new process inititated by a parent process.
+       A zombie process is a process that hangs without an exit condition.
+       An orphan process is a process where its execution is running by the has 
+       already finished running.
     
     * How do you spawn a thread, and what does it mean to join a thread?.
     
-    
+      You can spawn a thread by calling the method 
+      pthread_create(&tid, NULL, thread_function, NULL) 
+       
     * Talk about the problems with concurrency and sharing memory.
     
-    
+      In concurrency, there are problems that can occur to slow down the performance.
+      data race - when processes fight for the resources shared among them
+      dead lock - each process prevents others from moving forward
+      starvation - some or all processes are blocked from accessing the 
+                  resources they need to complete their tasks.
     
 Lets us know if you have any questions. 
 
