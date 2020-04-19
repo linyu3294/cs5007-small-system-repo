@@ -122,31 +122,103 @@ answers in a word document and when you are satisfied with your answers paste th
     * What is the purpose of compile-time and link-time interpositioning and what could it be used for.
       
         The purpose of compile-time and link-time interpositioning is to provide a 
-        way to change the code base, either add/replace a piece code or 
+        way to change the code base, either add/replace a piece of code.
       
     * What is a linker?
-    
+        
+        A linker connects 2 or more files such that the linked file can have access 
+        to the code in the file. The linker is the glue that binds code together so
+        to speak.
+        
     * Why do we use them?
-      
+        
+        The linking process happens after the compilation process. To increase accessibility
+        and efficiency, programmers do not always want to recompile the entire code 
+        base of application. Instead, it may be better to compile each pieces of the 
+        application as a executable object file, and then link them together after 
+        the compilation. Here is where the linker has the role of connecting compiled 
+        object files.
+        
+        
     *Describe the linking process
+    
+        There are two ways linking, dyanmic and static. Static linking is basiscally
+        copying and pasting one file to another. Whereas dynamic linking does not copy,
+        but merely provde a reference of an address of the first file to another file.
+    
 * **Processor and Processes**
     * What is a context switch? What information gets saved?
+     
+        A context switch is a procedure that takes a process to put in the foreground
+        and rest of the running processes in the background.The foreground proceedure 
+        has features to allow access to keyboard, mouse and any other devices.
+        
     * What are signals?
+        
+        A signal is a message send to a process to interrupt it normal proceedure. For 
+        example when the user presses control-c, a signal is sent to end the current 
+        process.
+        
     * How do you write a signal handler? What goes on when a signal is found?
+    
+        You will have to first import signal.h library. You can then use the 
+        signal(SIGINT, sigint_handler) to call the signal handler. When a signal handler
+        is found, the signal will be sent to the desginated process.
+        
     * What does a fork() do? Why is it a strange function?
+      
+        The fork() function clones the current process and creates a child process. It is 
+        a strange function because it returns twice. 
+        
     * What does execve(...) do?
+        
+        execve() runs the program desginated by the filename. Filename must be a executable.
+    
 * **The Memory Hierarchy**
     * What is pipelining?
+    
+        Pipelining is a way for one program to execute while another program is already
+        running. 
+        
     * Why is branching bad for performance?
+    
+        Branching is bad for perforrmance because processors are pipelined and depend on 
+        a predetermined sequence. When branches occur, they cause jumping logic and cause
+        the pipeline in cpu to restart, and is therefore less efficient.
+         
     * What is caching?
+        
+        Cache is a space for storing a limited and usually small amount of memory. Caching
+        helps performance.
+    
     * What is a directly mapped cache?
+    
+    
+    
 * **Virtual Memory**
     *What is virtual memory?
+        
+        Virtual Memeory is a region in RAM that is duplicated in a desginated
+        place in the hard-disk. Once the region in the RAM is freed up, it give
+        the user the illusion that there is unlimited space in RAM.
+         
 * **Concurrency**
     * What is a thread? What is a process? What is the difference?
-      * What is fork(), wait(), a child process, zombie processes, orphan processes
+     
+        A thread is an instance that hosts a running process. A thread has its
+        own id, logic, and stack/ local variables. Threads are a computational
+        cheaper way or excecuting processes.
+       
+    * What is fork(), wait(), a child process, zombie processes, orphan processes
+    
+       A fork creates a new child process that's a clone of its parent process.
+       A waint  b
+    
     * How do you spawn a thread, and what does it mean to join a thread?.
+    
+    
     * Talk about the problems with concurrency and sharing memory.
+    
     
     
 Lets us know if you have any questions. 
